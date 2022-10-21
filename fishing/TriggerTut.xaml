@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:fishing.Triggers"
+             x:Class="fishing.TriggerTut">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="entry" Text="" Placeholder="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" >
+                <Entry.Triggers>
+                    <Trigger TargetType="Entry"
+                             Property="IsFocused"
+                             Value="True">
+                        <Setter Property="BackgroundColor" Value="Green"/>
+                        <Setter Property="Style" Value="{StaticResource onboardingContent}"/>
+                    </Trigger>
+                </Entry.Triggers>
+            </Entry>
+
+
+            <Entry x:Name="entryEvent" Text="" Placeholder="Weldaf"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" >
+                <Entry.Triggers>
+                    <EventTrigger Event="Focused">
+                        <local:CustomTrigger/>
+                    </EventTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Entry x:Name="isfocusentry" Focused="isfocusentry_Focused" Text="I am Focused" 
+                   HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+            <Frame BackgroundColor="AliceBlue" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                <Button Text="Popmodal" Clicked="Button_Clicked"/>
+            </Frame>
+            <Button Text="Save" HorizontalOptions="Center"
+                    x:Name="button">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" 
+                                 Binding="{Binding Source={x:Reference entry}, Path=Text.Length}"
+                                 Value="0"
+                                 >
+                        <Setter Property="IsEnabled" Value="False"/>
+
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

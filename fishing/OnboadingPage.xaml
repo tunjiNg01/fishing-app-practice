@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:magic="http://magic.com/schemas/gradients"
+             xmlns:ViewModel="clr-namespace:fishing.ViewModel" xmlns:models="clr-namespace:fishing.Model"
+             x:Class="fishing.OnboadingPage">
+
+    <ContentPage.BindingContext>
+        <ViewModel:OnboardingViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+
+            <Grid RowDefinitions="1.5*, 1*" BackgroundColor="Black">
+                <BoxView BackgroundColor="Yellow"/>
+
+
+                <CarouselView Grid.Row="0"
+                              Grid.RowSpan="2"
+                              ItemsSource="{Binding Item}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate x:DataType="models:OnboardingModel"  >
+                            <Grid RowDefinitions="1.5*, 1*" >
+                                <StackLayout Grid.Row="1">
+                                    <Label Text="{Binding Title}"
+                                           TextColor="white"/>
+                                    <Label Text="{Binding Description}" TextColor="White"/>
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <magic:GradientView>
+                    <magic:GradientCollection>
+                        <magic:RadialGradient x:Name="radiaGradient"
+                                              Center="0.3,0"
+                                              RadiusX="30000">
+                            <magic:GradientStop Color="Transparent" Offset="0"/>
+                            <magic:GradientStop Color="Transparent" Offset="0.9"/>
+                            <magic:GradientStop Color="Black" Offset="1"/>
+                        </magic:RadialGradient>
+                    </magic:GradientCollection>
+                </magic:GradientView>
+
+                <!--  <BoxView Color="Black" Grid.Row="1"/>-->
+                <StackLayout Grid.Row="1" VerticalOptions="End">
+                  
+                </StackLayout>
+            </Grid>
+            <BoxView x:Name="Fader" Color="Black" Opacity="0" InputTransparent="True"/>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

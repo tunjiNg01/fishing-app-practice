@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:c="clr-namespace:fishing.Control"
+             x:Class="fishing.ControlTemplate">
+    <ContentPage.Content>
+        <StackLayout>
+            <c:ModifiedEntry Title="Enter Password" IsPassword="True"/>
+            <c:ModifiedEntry Title="Enter username"/>
+            
+        </StackLayout>
+       
+    </ContentPage.Content>
+</ContentPage>
